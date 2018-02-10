@@ -40,12 +40,11 @@ price DECIMAL(10,2) NOT NULL
 
 CREATE TABLE TRANSACTIONS (
   id INT NOT NULL,
-  person_id VARCHAR(255) NOT NULL,
-  vegetable_id VARCHAR(255) NOT NULL,
-  vegetable_quantity INT NOT NULL,
+  person_id INT(10) NOT NULL,
+  vegetable_id INT(10) NOT NULL,
+  vegetable_quantity DECIMAL(19, 2) NOT NULL,
   unit_price INT NOT NULL,
   total_amount INT NOT NULL,
-  quanty INT NOT NULL,
   bag_quantity INT NOT NULL,
   transaction_date DATETIME NOT NULL,
   UNIQUE INDEX transaction_id_unique (id ASC)
