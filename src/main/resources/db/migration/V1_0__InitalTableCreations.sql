@@ -1,9 +1,9 @@
 START TRANSACTION;
 
-CREATE TABLE VEGITABLE
+CREATE TABLE VEGETABLE
 (
 id INT(10) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-vegitable_name VARCHAR(255) NOT NULL,
+vegetable_name VARCHAR(255) NOT NULL,
 units VARCHAR(255) NOT NULL
 );
 CREATE UNIQUE INDEX vegitable_id_unique ON VEGITABLE (id);
@@ -13,24 +13,24 @@ CREATE TABLE PERSON
 id INT(10) AUTO_INCREMENT PRIMARY KEY NOT NULL,
 first_name VARCHAR(255) NOT NULL,
 last_name VARCHAR(255) NOT NULL,
-phonenumber INT(10) NOT NULL,
+phonenumber VARCHAR(10) NOT NULL,
 alias VARCHAR(255),
 email VARCHAR(255),
 location_id VARCHAR(255) NOT NULL,
-address_id VARCHAR(255),
-user_type VARCHAR(255) NOT NULL
+address_id VARCHAR(255) NOT NULL,
+user_type VARCHAR(255) NOT NULL 
 );
 CREATE UNIQUE INDEX person_id_unique ON PERSON (id);
 
 CREATE TABLE ADDRESS
 (
 id INT(10) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-address1 VARCHAR(255),
+address1 VARCHAR(255) NOT NULL,
 address2 VARCHAR(255),
-city VARCHAR(255),
-state VARCHAR(255),
-country VARCHAR(255),
-zipcode INT(6)
+city VARCHAR(255) NOT NULL,
+state VARCHAR(255) NOT NULL,
+country VARCHAR(255) NOT NULL,
+zipcode INT(6) NOT NULL
 );
 CREATE UNIQUE INDEX address_id_unique ON ADDRESS (id);
 
@@ -44,9 +44,9 @@ CREATE UNIQUE INDEX transportation_id_unique ON TRANSPORTATION (id);
 
 CREATE TABLE TRANSACTIONS (
   id INT NOT NULL,
-  vendor_id VARCHAR(255) NOT NULL,
-  vegitable_id VARCHAR(255) NOT NULL,
-  vegitable_quantity INT NOT NULL,
+  person_id VARCHAR(255) NOT NULL,
+  vegetable_id VARCHAR(255) NOT NULL,
+  vegetable_quantity INT NOT NULL,
   unit_price INT NOT NULL,
   total_amount INT NOT NULL,
   quanty INT NOT NULL,
@@ -59,8 +59,8 @@ CREATE TABLE PAYMENT_TRANSACTIONS
 (
  id INT(10) AUTO_INCREMENT PRIMARY KEY NOT NULL,
  person_id INT(10) NOT NULL,
- payment_amount DECIMAL(19, 0) NOT NULL,
- remaining_balance DECIMAL(19, 0) NOT NULL,
+ payment_amount DECIMAL(19, 2) NOT NULL,
+ remaining_balance DECIMAL(19, 2) NOT NULL,
  transaction_date DATETIME NOT NULL
 );
 CREATE UNIQUE INDEX payment_id_unique ON PAYMENT_TRANSACTIONS (id);
@@ -69,7 +69,7 @@ CREATE TABLE ACCOUNT_BALANCES
 (
  id INT(10) AUTO_INCREMENT PRIMARY KEY NOT NULL,
  person_id INT(10) NOT NULL,
- balance DECIMAL(19, 0) NOT NULL
+ balance DECIMAL(19, 2) NOT NULL
 );
 CREATE UNIQUE INDEX account_balances_id_unique ON ACCOUNT_BALANCES (id);
 
